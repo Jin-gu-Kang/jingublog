@@ -1,0 +1,104 @@
+<!-- profile.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 프로필 - Your Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 50%;
+            margin-bottom: 16px;
+        }
+
+        a {
+            font-weight: bold; /* 글씨를 굵게 설정 */
+            color: white;      /* 글씨 색상을 흰색으로 설정 */
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <h1><a href="/blog">Jingu's Blog</a></h1>
+    </header>
+
+    <section>
+        <h2>내 프로필</h2>
+
+<!-- 프로필 사진 -->
+<img id="profile-img" src="/profile-images/<%= profilePic %>?<%= Date.now() %>">
+
+<form action="/profile" method="post" enctype="multipart/form-data">
+    <label for="username">사용자명:</label>
+    <input type="text" id="username" name="username" value="Kang Jin GU" required>
+
+    <label for="bio">소개:</label>
+    <textarea id="bio" name="bio" required>24 years old</textarea>
+
+    <label for="new-profile-pic">프로필 사진 변경:</label>
+    <input type="file" id="new-profile-pic" name="new-profile-pic" accept="image/*">
+</form>
+
+<script>
+    // 파일 선택 시 미리보기 기능 추가
+    document.getElementById('new-profile-pic').addEventListener('change', function(event) {
+        const fileInput = event.target;
+        const imgElement = document.getElementById('profile-img');
+        
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                imgElement.src = e.target.result;
+            };
+
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    });
+
+    
+</script>
+
+</body>
+</html>

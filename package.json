@@ -1,0 +1,30 @@
+{
+  "name": "board",
+  "version": "1.0.0",
+  "description": "express server test",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "kangjg",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "ej": "^1.0.4",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "json": "^11.0.0",
+    "middleware": "^1.0.0",
+    "mongodb": "^6.3.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.3",
+    "nodemon": "^3.0.2",
+    "objectid": "^3.2.1",
+    "sha256": "^0.2.0",
+    "supervisor": "^0.12.0"
+  }
+}

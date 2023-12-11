@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - Your Blog</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div>
+    <h1>로그인을 해야 볼 수 있어요!</h1>
+    <form action="/login" method="post">
+      <h2>로그인</h2>
+      <label for="username">아이디:</label>
+      <input type="text" id="username" name="userid" required>
+
+      <label for="password">비밀번호:</label>
+      <input type="password" id="password" name="userpw" required>
+
+      <button type="submit">로그인</button>
+    </form>
+    <a href="/signup">회원가입</a>
+  </div>
+  <script>
+    // 쿼리 매개변수에서 메시지가 제공되었는지 확인합니다.
+    const message = new URLSearchParams(window.location.search).get('message');
+
+    // 메시지를 알림으로 표시합니다.
+    if (message) {
+        alert(decodeURIComponent(message)); // URL 디코딩
+    }
+  </script>
+</body>
+</html>

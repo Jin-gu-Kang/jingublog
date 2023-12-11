@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #666;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        article {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: white;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        a {
+            font-weight: bold; /* 글씨를 굵게 설정 */
+            color: white;      /* 글씨 색상을 흰색으로 설정 */
+        }
+
+        p {
+            color: #666;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        #list_write {
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="/blog">Jingu's Blog</a></h1>
+    </header>
+    <nav>
+        <a href="/login">로그인</a>
+        <a href="/signup">회원가입</a>
+        <a href="/write">글쓰기</a>
+        <a href="/profile">내 프로필</a>
+        <a href="/idlist">id list</a>
+    </nav>
+    <h1 id = "list_write">글 LIST</h1>
+    <section>
+        <% for(let i = 0; i < data.length; i++){ %>
+        <article>
+            <a href = "/content/<%= data[i]._id %>"><h2><%= data[i].title %></h2></a>
+            <p><%= data[i].content %></p>
+            <button class = 'delete btn btn-outline' data-id = '<%= data[i]._id %>'>삭제</button>
+        </article>
+        <% } %>
+    </section>
+    <footer>
+        &copy; 2023 Jingu's Blog. All rights reserved.
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $('.delete').click(function(e){
+          let sid = e.target.dataset.id;
+          let item = $(this);
+
+          $.ajax({
+            type: 'post',
+            url: '/delete',
+            data: { _id: sid }, 
+          }).done(function(result){
+            location.reload();
+            console.log("삭제 완료");
+          }).fail(function(xhr, textStatus, errorThrown){
+            console.log('삭제 실패');
+          });
+        });
+      </script>
+</body>
+</html>

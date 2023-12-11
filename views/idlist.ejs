@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blog</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #666;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        article {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: white;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        a {
+            font-weight: bold; /* 글씨를 굵게 설정 */
+            color: white;      /* 글씨 색상을 흰색으로 설정 */
+        }
+
+        p {
+            color: #666;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        #userList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .userCard {
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+        }
+        #id_list {
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="/blog">Jingu's Blog</a></h1>
+    </header>
+    <nav>
+        <a href="/login">로그인</a>
+        <a href="/signup">회원가입</a>
+        <a href="/write">글쓰기</a>
+        <a href="/profile">내 프로필</a>
+        <a href="/idlist">id list</a>
+    </nav>
+    <h1 id = 'id_list'><회원 LIST></h1>
+    <section id="userList">
+        <% for(let i = 0; i < user.length; i++){ %>
+        <div class="userCard">
+            <label><%= i + 1 %></label>
+            <h2>ID: <%= user[i].userid %></h2>
+            <!-- 기타 사용자 정보 표시 -->
+        </div>
+        <% } %>
+        <!-- 추가적인 사용자 정보를 계속해서 나열할 수 있습니다 -->
+    </section>
+    <footer>
+        &copy; 2023 Jingu's Blog. All rights reserved.
+    </footer>
+</body>
+</html>
