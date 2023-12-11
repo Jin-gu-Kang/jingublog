@@ -171,7 +171,7 @@ app.post('/write',function(req,res){
        console.log(err);
        console.log("데이터 추가 실패");
     });
-    res.render('blog.ejs');
+    res.redirect('/blog');
 });
 
 app.post("/delete", function(req, res){
